@@ -9,7 +9,6 @@
 // 0. variables
 
 // show/hide elements
-
 var showHowManyPlayersForm = false; 
 var showLastFirstMessage = true;
 var showShareButtons = false;
@@ -85,8 +84,6 @@ function stripeRows(uncheckedRows) {
 }
 
 // 1. chart-multiple-players.js 
-
-
 topThisMonthData = JSON.parse(topThisMonthJSON);
 
 // ajax request to load world champions data
@@ -560,23 +557,6 @@ $("#text-input .section-title-container").click(function() {
 
         $("#donate .section-title-container").css({"background-color": sectionNonHighlightColor, "color": textNonHighlightColor });
         $("#donate h1, #about .section-title-carets").css({"color" : textNonHighlightColor } );
-
-
-        /* this was for the radio choice of fide or uscf in the text input section. needs fixing.
-        // if no radio button is checked, check fide-standard
-        nothingChecked = true;
-        // console.log("nothingChecked", nothingChecked);
-        formatRadios = $("#ranking-format-radios input")
-        for ( f = 0; f < formatRadios.length; f++ ) {
-            if ( formatRadios[f].checked == true ) { nothingChecked = false; }
-        }
-        // console.log("nothingChecked", nothingChecked);
-        if ( nothingChecked ) {
-            id = "format-radio-fide-standard";
-            elem = document.getElementById(id);
-            elem.checked = true;
-        }
-        */
     }        
 });
 
@@ -700,31 +680,7 @@ function numberOfNameInputs(n) {
 
     var pickFormatDiv = "<div id=\"pick-format\"></div>";
     $("#enter-player-names").append(pickFormatDiv);
-    /*
-    // append a div to contain the rater radio options
-    var pickRaterDiv = "<div id=\"pick-rater\">";
-    $("#pick-format").append(pickRaterDiv);
-    // this creates the overall choice of FIDE or USCF ratings
-    var pickRaterRadios = "<input type=\"radio\" name=\"rater\" id=\"rater-radio-fide\" value=\"fide\" /><span class=\"radio-label\">FIDE</span>";
-    var pickRaterRadios = pickRaterRadios + "<input type=\"radio\" name=\"rater\" id=\"rater-radio-uscf\" value=\"uscf\" /><span class=\"radio-label\">USCF</span><br />"; 
 
-    $("#pick-rater").append(pickRaterRadios);
-
-    // append the radio options for choosing rating format
-    var pickFormatRadios = "<div id=\"fide-radios\"><input type=\"radio\" class=\"fide-format\" name=\"format\" id=\"format-radio-fide-standard\" value=\"fide-standard\"   onclick=\"attachFideDataList()\" /><span class=\"radio-label\">Standard</span>";
-    var pickFormatRadios = pickFormatRadios + "<input type=\"radio\" class=\"fide-format\" name=\"format\" id=\"format-radio-fide-rapid\" value=\"fide-rapid\" onclick=\"attachFideDataList()\" /><span class=\"radio-label\">Rapid</span>";
-    var pickFormatRadios = pickFormatRadios + "<input type=\"radio\" class=\"fide-format\" name=\"format\" id=\"format-radio-fide-blitz\" value=\"fide-blitz\"  onclick=\"attachFideDataList()\" /><span class=\"radio-label\">Blitz</span>";
-    var pickFormatRadios = pickFormatRadios + "<input type=\"radio\" class=\"fide-format\" name=\"format\" id=\"format-radio-urs\" value=\"urs\"  onclick=\"attachFideDataList()\" /><span class=\"radio-label\">URS</span></div>";
-    var pickFormatRadios = pickFormatRadios + "<div id=\"uscf-radios\"><div id=\"uscf-regular-container\"><input type=\"radio\" class=\"uscf-format\" name=\"format\" id=\"format-radio-uscf-regular\" value=\"uscf-regular\" onclick=\"removeFideDataList()\" /><span class=\"radio-label\">Regular</span>";
-    var pickFormatRadios = pickFormatRadios + "<input type=\"radio\" class=\"uscf-format\" name=\"format\" id=\"format-radio-uscf-regular-tourn\" value=\"uscf-regular-tourn\" onclick=\"removeFideDataList()\" /><span class=\"radio-label\">Regular by tournament</span></div>";
-    var pickFormatRadios = pickFormatRadios + "<div id=\"uscf-quick-container\"><input type=\"radio\" class=\"uscf-format\" name=\"format\" id=\"format-radio-uscf-quick\" value=\"uscf-quick\"  onclick=\"removeFideDataList()\" /><span class=\"radio-label\">Quick</span>";
-    var pickFormatRadios = pickFormatRadios + "<input type=\"radio\" class=\"uscf-format\" name=\"format\" id=\"format-radio-uscf-quick-tourn\" value=\"uscf-quick-tourn\"  onclick=\"removeFideDataList()\" /><span class=\"radio-label\">Quick by tournament</span></div>";
-    var pickFormatRadios = pickFormatRadios + "<div id=\"uscf-blitz-container\"><input type=\"radio\" class=\"uscf-format\" name=\"format\" id=\"format-radio-uscf-blitz\" value=\"uscf-blitz\"  onclick=\"removeFideDataList()\" /><span class=\"radio-label\">Blitz</span>";
-    var pickFormatRadios = pickFormatRadios + "<input type=\"radio\" class=\"uscf-format\" name=\"format\" id=\"format-radio-uscf-blitz-tourn\" value=\"uscf-blitz-tourn\"  onclick=\"removeFideDataList()\" /><span class=\"radio-label\">Blitz by tournament</span></div>";
-    var pickFormatRadios = pickFormatRadios + "<input type=\"radio\" class=\"uscf-format\" name=\"format\" id=\"format-radio-uscf-corres\" value=\"uscf-corresp\"  onclick=\"removeFideDataList()\" /><span class=\"radio-label\">Correspondence</span></div>";
-
-    $("#pick-format").append(pickFormatRadios);
-    */
 
     // another way to pick format - with a dropdown box instead of radio options
     var pickFormatSelectBox = "<p>Rating format:</p><select id=\"format-select\" name=\"format\" form=\"input-form\" onchange=\"autocompleteFix()\"><option value=\"fide-standard\">FIDE Standard</option>";
@@ -803,20 +759,6 @@ function numberOfNameInputs(n) {
         $("#rater-radio-uscf").prop("checked", true);
     }
 
-    // the format selected when the page loads should be...
-    // fide-standard if no search was done. otherwise the format of the search.
-    // check the correct format radio
-
-    // use this for format selection with radios
-    /* formatOptions = $("#pick-format input"); 
-    console.log("formatOptions", formatOptions);
-    for ( i = 0; i < formatOptions.length; i++ ) {
-        if ( formatOptions[i].value == format ) {
-            checkThis = $("#pick-format input")[i];
-            checkThis.setAttribute("checked", "checked");
-        } else {}
-    }
-    */
 
     // use this for format selection with the dropdown box
     formatOptions = $("div#pick-format select option");
@@ -1917,7 +1859,7 @@ function makeChart(data, xMin, xMax, yMin, yMax, chartTitle, textInput) {
         } else if ( ratingFormat === "uscfBlitzRatingHistory" || ratingFormat === "uscfBlitzRatingHistoryTourn" ) {
             formatForTitle = "USCF Blitz";
         } else if ( ratingFormat === "uscfCorrespRatingHistory" ) {
-            formatForTitle = "USCF Correspondence"
+            formatForTitle = "USCF Correspondence";
         }
         // console.log("formatForTitle", formatForTitle);
 
